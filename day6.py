@@ -1,7 +1,7 @@
 import numpy as np
 import numpy as np
 import pandas as pd
-import time
+
 data = pd.read_csv("data/day6.csv", header = None)
 
 # Challenge 1
@@ -10,7 +10,7 @@ total_t = 80
 fish = np.array(data.values)[0]
 for day in range(total_t):
     new = len(fish)- np.count_nonzero(fish)
-    fish = fish + (fish == 0)*7 - 1
+    fish += (fish == 0)*7 - 1
     fish = np.append(fish, new*[8])
 print(len(fish))
 
