@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = list(pd.read_csv("data/day1.csv", header = None)[0])
+data = list(pd.read_csv("data/day1.csv", header=None)[0])
 
 # Challenge 1
 

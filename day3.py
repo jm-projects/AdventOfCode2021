@@ -1,7 +1,7 @@
 from typing import List
 import pandas as pd
 
-data = list(pd.read_csv("data/day3.csv", header = None, dtype=str)[0])
+data = list(pd.read_csv("data/day3.csv", header=None, dtype=str)[0])
 
 # Challenge 1
 
@@ -12,7 +12,14 @@ print((2**len(data[0])-1-g)*g)
 
 # Challenge 2
 
-def solver(d: List[str], sign: int, rec=0) -> int:
+
+def solver(d: List[str], sign: int, rec: int = 0) -> int:
+    """Calculates the CO2 or Oxygen scrubber rating as specified
+    in the advent puzzle.
+    :param d: diagnostic binary data
+    :param sign: 1 if calculating Oxy Oxygen, 0 for CO2
+    :param rec: recursion parameter"""
+
     if len(d) == 1:
         return sum([int(d[0][i])*2**(len(d[0])-i-1) for i in range(len(d[0]))])
     else:
@@ -26,4 +33,6 @@ def solver(d: List[str], sign: int, rec=0) -> int:
         d2 = [num for num in d if num[rec] == str(key)]
         rec += 1
         return solver(d2, sign, rec)
-print(solver(data,1)*solver(data,0))
+
+
+print(solver(data, 1)*solver(data, 0))
